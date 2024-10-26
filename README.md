@@ -1,2 +1,0 @@
-# ShooterKRAI
-Bismillah Masuk
