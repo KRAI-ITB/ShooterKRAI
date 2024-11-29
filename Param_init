@@ -1,0 +1,26 @@
+%Ball Param
+d_ball = 0.240;
+M_ball = 0.600;
+Cd_ball = 0.54;
+r_ball = d_ball/2
+A_ball = pi*r_ball^2
+Magnus_ball = 16/3*pi^2*r_ball^3
+Y0_ball = 0.20;
+
+%Env Param
+rho = 1.204;
+Y0 = 0.20;
+
+%Input
+
+theta = 45;
+V0_ball = 15;
+
+
+V0x_ball = V0_ball*cos(theta)
+V0y_ball = V0_ball*sin(theta)
+
+
+%Target Param
+Y_Target = 2.43;
+
