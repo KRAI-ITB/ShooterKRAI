@@ -1,0 +1,76 @@
+
+function basketball_simulation11(R)
+    % Parameters
+    Hoop_Height = 2.43; % Height of the basket
+    g = 9.81; % Acceleration due to gravity (m/s^2)
+
+    %Toleransi
+    Y_tolerance = 0.001; %Toleransi sampling Y
+    X_tolerance = 0.18;  %Toleransi sampling X
+
+    %======================Sampling Subject=============&&
+    V0_init = 2;
+    V0_final = 12;
+    V0_Jump = 5;
+    
+
+    Theta_init = 15; 
+    Theta_final = 20; 
+    Theta_Jump = 5;
+
+    %Konversi teta ke radian (Akan dibuat jadi param fungsi)
+    Theta_init_rad = deg2rad(Theta_init);
+    Theta_final_rad = deg2rad(Theta_final);
+    Theta_Jump_rad = deg2rad(Theta_Jump);
+
+
+    %Inisialisasi range sample
+    V0_values = V0_init:V0_Jump:V0_final; 
+    theta_values = Theta_init_rad:Theta_Jump_rad:Theta_final_rad; 
+ 
+    % Initialize results storage
+    results = [];
+
+    % Loop through each angle and velocity
+    for V0 = V0_values
+        for theta = theta_values
+            % Convert theta to radians
+            theta_rad = deg2rad(theta);
+            
+            % Initial condition
+            S = 0; % Score initialization
+            
+            % Run Simulink
+            sim('TestAutosim.slx', 'ReturnWorkspaceOutputs', 'on');
+            
+            % Ambil x dan y dari simulink
+            x = out.BallPos(:, 1); 
+            y = out.BallPos(:, 2); 
+            
+            % Check if the ball hits the target
+            Y_hit = find(abs(y-Y_Target)<Y_tolerance);
+            X_hit = x(Y_hit);
+
+            if(X_onRing)
+                S =1;
+          
+            end
+        end
+    end
+
+    % Plotting the results
+    figure;
+    hold on;
+    for i = 1:size(results, 1)
+        if results(i, 3) == 1
+            plot(results(i, 2), results(i, 1), 'ko'); % Black dot for score 1
+        end
+    end
+    xlabel('Theta (degrees)');
+    ylabel('Initial Velocity (m/s)');
+    title('Basketball Shot Simulation Results');
+    grid on;
+    hold off;
+end
+
+basketball_simulation11(10)
