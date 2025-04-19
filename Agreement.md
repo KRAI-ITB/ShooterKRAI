@@ -15,8 +15,14 @@ Event [ground,BackpostHit,Ringplate,Ring,MasukRing]
 
 
 Code -1
-Code 0 --> Ground Collision (Perlukah?) Akan ditambah di Z = 2.4?
-Code 1 --> Backpost Collision
-Code 2 --> Ringplate Collision
-Code 3 --> Ring collision
-Code 4 --> Masuk Ring
+
+# Collision
+
+Code 0 --> Backpost Collision
+Code 1 --> Ringplate Collision
+Code 2 --> Ring collision
+Code 3 --> Masuk Ring
+
+# Out of Bound
+Code 5 --> X out of Bound
+Code 6 --> Ground Collision (Perlukah?) Akan ditambah di Z = 2.4?
