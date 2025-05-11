@@ -10,19 +10,15 @@ Z --> Ketinggian Vertikal
 from Solve_ivp
 Event [ground,BackpostHit,Ringplate,Ring,MasukRing]
 
+ 
 
 
+b
 
-
-Code -1
-
-# Collision
-
-Code 0 --> Backpost Collision
-Code 1 --> Ringplate Collision
-Code 2 --> Ring collision
-Code 3 --> Masuk Ring
-
+Out of Bound Logic
 # Out of Bound
-Code 5 --> X out of Bound
+Code 1 --> X out of Bound
+Code 2 --> Backpost Bounce
+Code 3 --> Ringplate Bounce
+Code 4 --> Hit
 Code 6 --> Ground Collision (Perlukah?) Akan ditambah di Z = 2.4?
